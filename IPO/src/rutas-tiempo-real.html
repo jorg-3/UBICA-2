@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rutas en Tiempo Real</title>
+    <link rel="icon" type="image/png" href="../images/Logo-corto.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo-text">UBICA-2</a>
+            <ul class="nav-links">
+                <li><a href="index.html" className="back-button">🏡 Inicio</a></li>
+                <li><a href="emociones.html" aria-label="Acceder a la navegación emocional">🧭 Navegación emocional</a></li>
+                <li><a href="rutas-tiempo-real.html" aria-label="Acceder a rutas en tiempo real">📍 Rutas en tiempo real</a></li>
+                <li><a href="foro.html" aria-current="page" aria-label="Acceder al foro">💬 Foro</a></li>
+                <li><a href="desafio.html" aria-label="Acceder a desafíos diarios">🎯 Desafíos diarios</a></li>
+                <li><a href="iniciar-sesion.html" id="nav-login-btn" aria-label="Iniciar sesión">Inicia Sesión</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="quienes-banner">
+        <h1>Rutas en Tiempo Real</h1>
+    </header>
+
+    <!-- Mensaje de autenticación -->
+    <div id="auth-message" class="auth-message" style="display: none;">
+        Regístrate o inicia sesión para poder disfrutar de esta funcionalidad
+    </div>
+
+    <!-- Sección de la cámara -->
+    <section id="camara-section" class="camara-section">
+        <div id="zona-imagen">
+            <video id="vista-previa" autoplay muted playsinline></video>
+            <img id="imagen-resultante" src="" alt="Resultado" />
+        </div>	
+        <button id="botonCamara" class="info-button">Abrir cámara</button>
+        <input type="file" id="importarImagen" accept="image/*" style="display: none;" />
+        <button id="botonImportar" class="info-button">Importar imagen</button>
+    </section>
+
+    <div id="loading-overlay">
+        <div class="logo-wrapper">
+            <img src="../images/Logo-corto.png" alt="Logo de carga">
+            <div class="orbiter">
+                <div class="orb"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-transition"></div>
+    <footer class="footer">
+        <div class="footer-left">
+            <div class="store-badges">
+                <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.maps" target="_blank" rel="noopener noreferrer">
+                    <img src="../images/googleplay-ES.svg" alt="Disponible en Google Play">
+                </a>
+                <a href="https://apps.apple.com/app/id585027354" target="_blank" rel="noopener noreferrer">
+                    <img src="../images/appstore-ES.svg" alt="Disponible en App Store">
+                </a>
+            </div>
+        </div>
+        <div class="footer-right">
+            <p>
+                <a href="quienes-somos.html" class="footer-link">Quiénes somos</a>  | 
+                © 2025 UBICA-2. Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

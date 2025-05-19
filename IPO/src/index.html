@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UBICA-2</title>
+    <link rel="icon" type="image/png" href="../images/Logo-corto.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo-text">UBICA-2</a>
+            <ul class="nav-links">
+                <li><a href="index.html" className="back-button">🏡Inicio</a></li>
+                <li><a href="emociones.html" aria-label="Acceder a la navegación emocional">🧭 Navegación emocional</a></li>
+                <li><a href="rutas-tiempo-real.html" aria-label="Acceder a rutas en tiempo real">📍 Rutas en tiempo real</a></li>
+                <li><a href="foro.html" aria-current="page" aria-label="Acceder al foro">💬 Foro</a></li>
+                <li><a href="desafio.html" aria-label="Acceder a desafíos diarios">🎯 Desafíos diarios</a></li>
+                <li><a href="iniciar-sesion.html" id="nav-login-btn" aria-label="Iniciar sesión">Inicia Sesión</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+<header class="hero">
+  <div class="hero-bg"></div>
+
+  <div class="hero-center">
+    <img 
+      src="../images/Logo-corto.png" 
+      alt="Logo UBICA-2" 
+      class="hero-logo"
+      onclick="scrollToSection('navegacion-emocional')"
+    >
+  </div>
+</header>
+
+    </header>
+
+    <section id="navegacion-emocional" class="info-section emotional-section">
+        <div class="emotional-image">
+            <img src="../images/Silueta mujer.svg" alt="Silueta mujer">
+        </div>
+        <div class="content">
+            <h2>Navegación emocional</h2>
+            <p>Tu <strong>bienestar emocional</strong> es tan importante como tu destino. ¿Alguna vez has sentido que un paseo podía cambiar tu día? Estudios demuestran que conectar con el entorno de forma consciente mejora el <strong>estado de ánimo</strong>, reduce el <strong>estrés</strong> y fortalece la <strong>salud mental</strong>. Conectar contigo mismo mientras exploras tu ciudad puede ser más poderoso de lo que imaginas.</p>
+            <p>Identificar <strong>cómo te sientes</strong> es el primer paso para tomar mejores decisiones. No es lo mismo moverse con energía que con cansancio, con alegría o con nostalgia. Al reconocer tu <strong>estado emocional</strong>, puedes elegir rutas que te acompañen, y transformar una simple caminata en una experiencia <strong>reparadora</strong> y <strong>significativa</strong>.</p>
+            <p>Con nuestra herramienta de <strong>navegación emocional</strong>, no solo eliges hacia dónde vas, sino cómo quieres sentirte en el camino. Activa esta herramienta y deja que la app se adapte a ti, sugiriéndote caminos que respetan tu energía, tus emociones y tu ritmo. Dale un giro a tu manera de explorar: haz que cada paso tenga sentido.</p>
+        </div>
+        <div class="action-button-container">
+            <button class="info-button" id="btn-navegacion-emocional" disabled>Iniciar detección de emociones</button>
+            <button class="help-button" >?</button>
+        </div>
+    </section>
+
+    <hr class="feature-divider">
+
+    <section id="rutas-tiempo-real" class="info-section realtime-section">
+        <div class="content">
+            <h2>Rutas en tiempo real</h2>
+            <p>Explora tu entorno como nunca antes. Con nuestra herramienta de <strong>rutas en tiempo real</strong>, basta con abrir tu cámara para descubrir información útil sobre lo que tienes delante: calles, edificios, puntos de interés o servicios cercanos. Todo se despliega al instante, directamente en tu pantalla.</p>
+            <p>¿Te gustaría saber qué hay a tu alrededor sin perder tiempo buscando? Esta herramienta convierte tu paseo en una experiencia interactiva, dándote <strong>datos relevantes</strong>, <strong>indicaciones visuales</strong> y <strong>sugerencias personalizadas</strong> según tu ubicación y tus necesidades del momento. Porque cada lugar tiene algo que decirte.</p>
+            <p>Activa esta función y deja que la tecnología te guíe de forma ágil y precisa. Navega con los ojos abiertos, conéctate al presente y conviértete en protagonista de tu camino. Explorar nunca fue tan fácil.</p>
+        </div>
+        <div class="realtime-image">
+            <img src="../images/Silueta hombre.svg" alt="Silueta hombre">
+        </div>
+        <div class="action-button-container">
+            <button class="info-button" onclick="window.location.href='rutas-tiempo-real.html'">Accede a rutas en tiempo real</button>
+        </div>
+    </section>
+
+    <hr class="feature-divider">
+
+    <section id="foro" class="info-section forum-section">
+        <div class="forum-image">
+            <img src="../images/foro.png" alt="Foro" class="max-w-xs h-auto mx-auto">
+        </div>
+        <div class="content">
+            <h2>Foro</h2>
+            <p>El <strong>foro</strong> de UBICA-2 es el lugar donde los exploradores se encuentran. Comparte tus experiencias, descubre rutas recomendadas por otros usuarios y encuentra inspiración para tus próximas aventuras. La comunidad está aquí para apoyarte.</p>
+            <p>¿Quieres saber cómo otros han transformado sus paseos en momentos memorables? Únete a discusiones sobre destinos, emociones y consejos prácticos. Desde recomendaciones locales hasta historias personales, el foro es un espacio para <strong>conectar</strong> y <strong>crecer</strong>.</p>
+            <p>Accede ahora y forma parte de una comunidad que valora el viaje tanto como el destino. Tu voz cuenta, y tus historias pueden inspirar a otros a explorar de una manera más consciente.</p>
+        </div>
+        <div class="action-button-container">
+            <button class="info-button" id="btn-foro" disabled>Accede al foro</button>
+            <button class="help-button" >?</button>
+        </div>
+    </section>
+
+    <hr class="feature-divider">
+
+    <section id="desafios-diarios" class="info-section challenges-section">
+        <div class="content">
+            <h2>Desafíos diarios</h2>
+            <p>Los <strong>desafíos diarios</strong> son pequeñas acciones diseñadas para enriquecer tu día y fomentar una conexión más profunda con tu entorno y contigo mismo. Desde caminatas conscientes hasta ejercicios de gratitud, cada reto está pensado para ser simple pero significativo.</p>
+            <p>Completar un desafío no solo te ayuda a descubrir nuevos lugares o perspectivas, sino que también promueve el <strong>bienestar mental</strong> y la <strong>creatividad</strong>. Según estudios, realizar pequeñas tareas intencionadas puede aumentar la satisfacción personal y reducir el estrés. ¿Listo para probar algo nuevo hoy?</p>
+            <p>Activa los desafíos diarios y déjate sorprender por lo que puedes lograr con un pequeño paso. Cada reto es una oportunidad para explorar, reflexionar y disfrutar, haciendo que cada día cuente.</p>
+        </div>
+        <div class="challenges-image">
+            <img src="../images/Estrella.png" alt="Desafios" class="max-w-xs h-auto mx-auto">
+        </div>
+        <div class="action-button-container">
+            <button class="info-button" id="btn-desafios-diarios" disabled>Accede al desafíos diarios</button>
+            <button class="help-button" >?</button>
+        </div>
+    </section>
+
+    <div id="loading-overlay">
+        <div class="logo-wrapper">
+            <img src="../images/Logo-corto.png" alt="Logo de carga">
+            <div class="orbiter">
+                <div class="orb"></div>
+            </div>
+        </div>
+        <div id="loading-message">Cargando...</div>
+    </div>
+
+    <div class="footer-transition"></div>
+    <footer class="footer">
+        <div class="footer-left">
+            <div class="store-badges">
+                <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.maps" target="_blank" rel="noopener noreferrer">
+                    <img src="../images/googleplay-ES.svg" alt="Disponible en Google Play">
+                </a>
+                <a href="https://apps.apple.com/app/id585027354" target="_blank" rel="noopener noreferrer">
+                    <img src="../images/appstore-ES.svg" alt="Disponible en App Store">
+                </a>
+            </div>
+        </div>
+        <div class="footer-right">
+            <p>
+                <a href="quienes-somos.html" class="footer-link">Quiénes somos</a>  | 
+                © 2025 UBICA-2. Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

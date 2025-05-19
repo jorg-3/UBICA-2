@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Desafíos Diarios</title>
+  <link rel="icon" type="image/png" href="../images/Logo-corto.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo-text">UBICA-2</a>
+      <ul class="nav-links">
+        <li><a href="index.html" className="back-button">🏡Volver al inicio</a></li>
+        <li><a href="emociones.html" aria-label="Acceder a la navegación emocional">🧭 Navegación emocional</a></li>
+        <li><a href="rutas-tiempo-real.html" aria-label="Acceder a rutas en tiempo real">📍 Rutas en tiempo real</a></li>
+        <li><a href="foro.html" aria-current="page" aria-label="Acceder al foro">💬 Foro</a></li>
+        <li><a href="desafio.html" aria-label="Acceder a desafíos diarios">🎯 Desafíos diarios</a></li>
+        <li><a href="iniciar-sesion.html" id="nav-login-btn" aria-label="Iniciar sesión">👤 Inicia Sesión</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="quienes-banner">
+    <h1> Desafíos Diarios</h1>
+  </header>
+
+  <section class="challenges-section">
+    <div class="challenges-container">
+      <div class="cards">
+        <div class="card" data-challenge-id="1">
+          <h3>🌿 Caminata consciente</h3>
+          <p>Da un paseo de 15 minutos prestando atención plena a los sonidos, olores y colores a tu alrededor.</p>
+          <div class="icon-buttons">
+            <span class="tick">✅</span>
+            <span class="cross">❌</span>
+          </div>
+        </div>
+
+        <div class="card" data-challenge-id="2">
+          <h3>📸 Captura un momento</h3>
+          <p>Toma una foto de algo que te inspire hoy. Puede ser una flor, una sonrisa o una vista inesperada.</p>
+          <div class="icon-buttons">
+            <span class="tick">✅</span>
+            <span class="cross">❌</span>
+          </div>
+        </div>
+
+        <div class="card" data-challenge-id="3">
+          <h3>📝 Diario de gratitud</h3>
+          <p>Escribe tres cosas por las que estás agradecido/a hoy. Puede ser algo simple pero significativo.</p>
+          <div class="icon-buttons">
+            <span class="tick">✅</span>
+            <span class="cross">❌</span>
+          </div>
+        </div>
+
+        <div class="card" data-challenge-id="4">
+          <h3>💧 Hidrátate y respira</h3>
+          <p>Bebe un vaso de agua y haz 3 respiraciones profundas. A veces lo simple es lo más poderoso.</p>
+          <div class="icon-buttons">
+            <span class="tick">✅</span>
+            <span class="cross">❌</span>
+          </div>
+        </div>
+      </div>
+      <div class="calendar">
+        <div class="calendar-header">
+          <h3>Mayo 2025</h3>
+        </div>
+        <div class="calendar-grid" id="calendar-grid"></div>
+      </div>
+      <!-- <div class="calendar-container">
+        <div class="calendar">
+          <div class="calendar-header">
+            <h3>Mayo 2025</h3>
+          </div>
+          <div class="calendar-grid" id="calendar-grid"></div>
+        </div>
+      </div> -->
+    </div>
+  </section>
+
+  <div id="loading-overlay">
+    <div class="logo-wrapper">
+      <img src="../images/Logo-corto.png" alt="Logo de carga">
+      <div class="orbiter">
+        <div class="orb"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-transition"></div>
+  <footer class="footer">
+    <div class="footer-left">
+      <div class="store-badges">
+        <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.maps" target="_blank" rel="noopener noreferrer">
+          <img src="../images/googleplay-ES.svg" alt="Disponible en Google Play">
+        </a>
+        <a href="https://apps.apple.com/app/id585027354" target="_blank" rel="noopener noreferrer">
+          <img src="../images/appstore-ES.svg" alt="Disponible en App Store">
+        </a>
+      </div>
+    </div>
+    <div class="footer-right">
+      <p>
+        <a href="quienes-somos.html" class="footer-link">Quiénes somos</a> | 
+        © 2025 UBICA-2. Todos los derechos reservados.
+      </p>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
+  <script>
+    // Ocultar el overlay de carga
+    window.addEventListener('load', () => {
+      const overlay = document.getElementById('loading-overlay');
+      setTimeout(() => {
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+          overlay.style.display = 'none';
+        }, 1000);
+      }, 2000);
+    });
+
+        // Datos precargados de desafíos para todo mayo 2025
+        const challengesByDate = {
+      '2025-05-01': [
+        { id: 1, title: '🌳 Toca la naturaleza', description: 'Toca un árbol o planta y describe su textura en tu mente.' },
+        { id: 2, title: '😊 Acto de bondad', description: 'Haz un pequeño gesto amable por alguien, como un cumplido.' },
+        { id: 3, title: '📖 Lee con calma', description: 'Lee 5 páginas de un libro que te guste, sin prisas.' }
+      ],
+      '2025-05-02': [
+        { id: 4, title: '🧘 Estiramiento matutino', description: 'Haz 5 minutos de estiramientos suaves al despertar.' },
+        { id: 5, title: '🍎 Snack saludable', description: 'Come una fruta o verdura como merienda hoy.' },
+        { id: 6, title: '✍️ Idea creativa', description: 'Escribe una idea creativa que se te ocurra hoy.' }
+      ],
+      '2025-05-03': [
+        { id: 7, title: '🌅 Mira el amanecer', description: 'Observa el amanecer y aprecia los colores del cielo.' },
+        { id: 8, title: '💬 Conversa', description: 'Habla con alguien sobre algo que te apasione.' },
+        { id: 9, title: '🧹 Ordena un espacio', description: 'Organiza un cajón o estante pequeño.' },
+        { id: 10, title: '🎶 Escucha con atención', description: 'Escucha una canción prestando atención a cada instrumento.' }
+      ],
+      '2025-05-04': [
+        { id: 11, title: '☕ Pausa consciente', description: 'Tómate 5 minutos para disfrutar de una bebida en silencio.' },
+        { id: 12, title: '🌸 Olor del día', description: 'Encuentra una flor o planta y respira su aroma.' },
+        { id: 13, title: '📝 Meta pequeña', description: 'Escribe una meta alcanzable para esta semana.' }
+      ],
+      '2025-05-05': [
+        { id: 14, title: '🚶 Paseo sin destino', description: 'Camina 10 minutos sin un rumbo fijo, solo explorando.' },
+        { id: 15, title: '🖌️ Dibuja algo', description: 'Haz un dibujo simple, aunque sea un garabato.' },
+        { id: 16, title: '💡 Reflexión', description: 'Piensa en algo que aprendiste recientemente.' },
+        { id: 17, title: '🧼 Limpieza rápida', description: 'Limpia una superficie pequeña, como tu escritorio.' }
+      ],
+      '2025-05-06': [
+        { id: 18, title: '🌞 Saludo al sol', description: 'Haz 5 minutos de estiramientos al aire libre.' },
+        { id: 19, title: '📚 Lee algo nuevo', description: 'Lee un artículo o capítulo que te intrigue.' },
+        { id: 20, title: '🙏 Gratitud silenciosa', description: 'Piensa en alguien por quien estés agradecido/a.' }
+      ],
+      '2025-05-07': [
+        { id: 21, title: '🍵 Té consciente', description: 'Prepara y bebe un té o infusión con atención plena.' },
+        { id: 22, title: '🌍 Explora tu entorno', description: 'Observa un detalle nuevo en tu vecindario.' },
+        { id: 23, title: '📷 Foto creativa', description: 'Toma una foto desde un ángulo inusual.' },
+        { id: 24, title: '🧠 Ejercicio mental', description: 'Resuelve un acertijo o sudoku corto.' }
+      ],
+      '2025-05-08': [
+        { id: 25, title: '🧘‍♀️ Respiración profunda', description: 'Haz 10 respiraciones profundas, contando cada una.' },
+        { id: 26, title: '📝 Lista de sueños', description: 'Escribe 3 cosas que te gustaría hacer algún día.' },
+        { id: 27, title: '🌿 Planta amiga', description: 'Riega o cuida una planta con cariño.' }
+      ],
+      '2025-05-09': [
+        { id: 28, title: '🚴 Muévete', description: 'Haz 15 minutos de actividad física, como caminar o bailar.' },
+        { id: 29, title: '🎨 Expresión artística', description: 'Crea algo con tus manos: un dibujo, manualidad, etc.' },
+        { id: 30, title: '📖 Historia corta', description: 'Lee o escribe una historia breve.' },
+        { id: 31, title: '💌 Mensaje amable', description: 'Envía un mensaje positivo a un amigo.' }
+      ],
+      '2025-05-10': [
+        { id: 32, title: '🌙 Noche estrellada', description: 'Observa las estrellas o la luna por 5 minutos.' },
+        { id: 33, title: '🧹 Orden interior', description: 'Organiza un espacio personal, como tu bolso.' },
+        { id: 34, title: '🎵 Playlist del día', description: 'Crea una lista de 3 canciones que te animen.' }
+      ],
+      '2025-05-11': [
+        { id: 35, title: '🌞 Yoga suave', description: 'Prueba 10 minutos de yoga o estiramientos.' },
+        { id: 36, title: '📝 Reflexión semanal', description: 'Escribe cómo te sentiste esta semana.' },
+        { id: 37, title: '🍓 Sabor consciente', description: 'Come una fruta saboreándola lentamente.' },
+        { id: 38, title: '📸 Detalle pequeño', description: 'Fotografía un objeto pequeño que te llame la atención.' }
+      ],
+      '2025-05-12': [
+        { id: 39, title: '☕ Momento de pausa', description: 'Tómate 5 minutos para disfrutar de una bebida caliente en silencio.' },
+        { id: 40, title: '✍️ Reflexión rápida', description: 'Escribe una cosa que aprendiste hoy.' }
+      ],
+      '2025-05-13': [
+        { id: 41, title: '🌿 Caminata consciente', description: 'Da un paseo de 15 minutos prestando atención plena a los sonidos, olores y colores a tu alrededor.' },
+        { id: 42, title: '📸 Captura un momento', description: 'Toma una foto de algo que te inspire hoy. Puede ser una flor, una sonrisa o una vista inesperada.' },
+        { id: 43, title: '📝 Diario de gratitud', description: 'Escribe tres cosas por las que estás agradecido/a hoy. Puede ser algo simple pero significativo.' },
+        { id: 44, title: '💧 Hidrátate y respira', description: 'Bebe un vaso de agua y haz 3 respiraciones profundas. A veces lo simple es lo más poderoso.' }
+      ],
+      '2025-05-14': [
+        { id: 45, title: '🌄 Atardecer', description: 'Observa el atardecer y describe sus colores.' },
+        { id: 46, title: '📝 Lista de logros', description: 'Escribe 3 cosas que hayas logrado esta semana.' },
+        { id: 47, title: '🧘 Meditación breve', description: 'Medita durante 5 minutos en silencio.' }
+      ],
+      '2025-05-15': [
+        { id: 48, title: '🍵 Sabor nuevo', description: 'Prueba un alimento o bebida que no hayas probado antes.' },
+        { id: 49, title: '🌳 Conexión natural', description: 'Pasa 10 minutos en un parque o jardín.' },
+        { id: 50, title: '📷 Foto en blanco y negro', description: 'Toma una foto en blanco y negro de algo interesante.' },
+        { id: 51, title: '📚 Aprende una palabra', description: 'Busca y aprende el significado de una palabra nueva.' }
+      ],
+      '2025-05-16': [
+        { id: 52, title: '🧘‍♂️ Estiramiento nocturno', description: 'Haz 5 minutos de estiramientos antes de dormir.' },
+        { id: 53, title: '📝 Carta a ti', description: 'Escribe una carta corta a tu yo futuro.' },
+        { id: 54, title: '🎶 Canción nostálgica', description: 'Escucha una canción que te traiga recuerdos.' }
+      ],
+      '2025-05-17': [
+        { id: 55, title: '🚶 Explorador urbano', description: 'Camina por una calle que no conoces.' },
+        { id: 56, title: '🌿 Aroma natural', description: 'Huele una hierba o especia y describe su aroma.' },
+        { id: 57, title: '📝 Idea para mañana', description: 'Escribe un plan pequeño para mañana.' },
+        { id: 58, title: '🧼 Ordena tu espacio', description: 'Organiza un área pequeña de tu casa.' }
+      ],
+      '2025-05-18': [
+        { id: 59, title: '🌞 Luz natural', description: 'Pasa 10 minutos bajo la luz del sol.' },
+        { id: 60, title: '📖 Lee poesía', description: 'Lee un poema y reflexiona sobre su mensaje.' },
+        { id: 61, title: '😊 Sonrisa compartida', description: 'Sonríe a un desconocido hoy.' }
+      ],
+      '2025-05-19': [
+        { id: 62, title: '🧘 Respiración 4-4-4', description: 'Inhala 4 segundos, sostén 4, exhala 4.' },
+        { id: 63, title: '📝 Recuerdo feliz', description: 'Escribe un recuerdo que te haga sonreír.' },
+        { id: 64, title: '🌸 Toca una flor', description: 'Toca una flor y observa sus detalles.' },
+        { id: 65, title: '🎨 Color del día', description: 'Elige un color y busca objetos de ese tono.' }
+      ],
+      '2025-05-20': [
+        { id: 66, title: '🚴 Actividad divertida', description: 'Haz 15 minutos de una actividad que te guste.' },
+        { id: 67, title: '📷 Foto de la naturaleza', description: 'Fotografía un elemento natural, como un árbol.' },
+        { id: 68, title: '📝 Gratitud por alguien', description: 'Escribe por qué estás agradecido/a por una persona.' }
+      ],
+      '2025-05-21': [
+        { id: 69, title: '☕ Desayuno consciente', description: 'Come tu desayuno prestando atención a cada bocado.' },
+        { id: 70, title: '🌍 Sonido del entorno', description: 'Escucha los sonidos a tu alrededor por 5 minutos.' },
+        { id: 71, title: '📝 Plan de autocuidado', description: 'Escribe una actividad de autocuidado para esta semana.' },
+        { id: 72, title: '🧼 Limpieza simbólica', description: 'Limpia un objeto que uses a diario.' }
+      ],
+      '2025-05-22': [
+        { id: 73, title: '🌞 Estiramiento al sol', description: 'Haz estiramientos al aire libre por 10 minutos.' },
+        { id: 74, title: '📖 Aprende algo', description: 'Lee o mira algo educativo por 10 minutos.' },
+        { id: 75, title: '💌 Nota positiva', description: 'Escribe una nota positiva y déjala para alguien.' }
+      ],
+      '2025-05-23': [
+        { id: 76, title: '🧘 Meditación guiada', description: 'Prueba una meditación guiada de 5 minutos.' },
+        { id: 77, title: '🌿 Cuida una planta', description: 'Riega o limpia las hojas de una planta.' },
+        { id: 78, title: '📷 Foto abstracta', description: 'Toma una foto que capture una textura o patrón.' },
+        { id: 79, title: '📝 Lista de deseos', description: 'Escribe 3 cosas que desees para el futuro.' }
+      ],
+      '2025-05-24': [
+        { id: 80, title: '🚶 Paseo con propósito', description: 'Camina 15 minutos con una intención clara.' },
+        { id: 81, title: '🎶 Música relajante', description: 'Escucha música tranquila por 10 minutos.' },
+        { id: 82, title: '😊 Ayuda a alguien', description: 'Ofrece ayuda a alguien en una tarea pequeña.' }
+      ],
+      '2025-05-25': [
+        { id: 83, title: '🌅 Reflexión al amanecer', description: 'Piensa en tus metas mientras ves el amanecer.' },
+        { id: 84, title: '📝 Carta de gratitud', description: 'Escribe una carta agradeciendo a alguien.' },
+        { id: 85, title: '🧘‍♀️ Equilibrio', description: 'Practica mantener el equilibrio en una pierna por 30 segundos.' },
+        { id: 86, title: '📷 Foto de alegría', description: 'Captura algo que te haga feliz.' }
+      ],
+      '2025-05-26': [
+        { id: 87, title: '🍎 Cocina algo simple', description: 'Prepara una receta fácil y saludable.' },
+        { id: 88, title: '🌳 Abraza un árbol', description: 'Toca o abraza un árbol por un momento.' },
+        { id: 89, title: '📝 Idea innovadora', description: 'Escribe una idea para mejorar algo en tu vida.' }
+      ],
+      '2025-05-27': [
+        { id: 90, title: '🧘 Respiración consciente', description: 'Haz 5 minutos de respiraciones lentas y profundas.' },
+        { id: 91, title: '📖 Lee inspiración', description: 'Lee una cita o texto que te motive.' },
+        { id: 92, title: '🌸 Detalle natural', description: 'Observa una hoja o flor con atención.' },
+        { id: 93, title: '💬 Comparte una historia', description: 'Cuéntale una anécdota a alguien.' }
+      ],
+      '2025-05-28': [
+        { id: 94, title: '🚴 Ejercicio ligero', description: 'Haz 10 minutos de ejercicio suave, como caminar.' },
+        { id: 95, title: '📝 Reflexión nocturna', description: 'Escribe cómo te sentiste hoy antes de dormir.' },
+        { id: 96, title: '🎶 Canción favorita', description: 'Escucha tu canción favorita y canta si quieres.' }
+      ],
+      '2025-05-29': [
+        { id: 97, title: '🌞 Luz matutina', description: 'Abre una ventana y deja entrar la luz del día.' },
+        { id: 98, title: '📷 Foto urbana', description: 'Toma una foto de algo interesante en la ciudad.' },
+        { id: 99, title: '📝 Lista de fortalezas', description: 'Escribe 3 cosas en las que eres bueno/a.' },
+        { id: 100, title: '🧼 Ordena un rincón', description: 'Organiza un espacio pequeño, como una mesa.' }
+      ],
+      '2025-05-30': [
+        { id: 101, title: '🧘‍♂️ Meditación al aire libre', description: 'Medita 5 minutos en un lugar tranquilo afuera.' },
+        { id: 102, title: '🌿 Aromaterapia casera', description: 'Huele una fruta cítrica o hierba fresca.' },
+        { id: 103, title: '📝 Meta del mes', description: 'Escribe una meta para el próximo mes.' }
+      ],
+      '2025-05-31': [
+        { id: 104, title: '🌄 Cierra el mes', description: 'Reflexiona sobre lo que lograste en mayo.' },
+        { id: 105, title: '😊 Comparte gratitud', description: 'Agradece a alguien por su apoyo este mes.' },
+        { id: 106, title: '📷 Foto final', description: 'Toma una foto que resuma tu mes.' },
+        { id: 107, title: '🎶 Celebra con música', description: 'Baila o escucha una canción que te alegre.' }
+      ]
+    };
+    // Generar calendario
+    function generateCalendar() {
+      const calendarGrid = document.getElementById('calendar-grid');
+      const today = new Date('2025-05-13');
+      const year = today.getFullYear();
+      const month = today.getMonth();
+      const currentDay = today.getDate();
+
+      // Primer día del mes
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+      // Días de la semana
+      const weekdays = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];  // He movido el domingo al final que me daba toc jaajaj
+      weekdays.forEach(day => {
+        const dayHeader = document.createElement('div');
+        dayHeader.className = 'calendar-day-header';
+        dayHeader.textContent = day;
+        calendarGrid.appendChild(dayHeader);
+      });
+
+      // Espacios vacíos antes del primer día
+      for (let i = 0; i < (firstDay === 0 ? 6 : firstDay - 1); i++) {
+        const emptyDay = document.createElement('div');
+        emptyDay.className = 'calendar-day empty';
+        calendarGrid.appendChild(emptyDay);
+      }
+
+      // Días del mes
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dayElement = document.createElement('div');
+        dayElement.className = 'calendar-day';
+        dayElement.textContent = day;
+        const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+
+        // Resaltar día actual
+        if (day === currentDay) {
+          dayElement.classList.add('today');
+        }
+
+        // Marcar días con desafíos completados
+        const completedChallenges = JSON.parse(localStorage.getItem(`challenges-${dateStr}`)) || [];
+        if (completedChallenges.length > 0) {
+          dayElement.classList.add('completed');
+        }
+
+        // Solo días pasados o actuales son clicables
+        if (day <= currentDay) {
+          dayElement.classList.add('clickable');
+          dayElement.addEventListener('click', () => loadChallenges(dateStr));
+        } else {
+          dayElement.classList.add('disabled');
+        }
+
+        calendarGrid.appendChild(dayElement);
+      }
+    }
+
+    // Cargar desafíos para una fecha
+    function loadChallenges(dateStr) {
+      const cardsContainer = document.querySelector('.cards');
+      cardsContainer.innerHTML = '';
+
+      const challenges = challengesByDate[dateStr] || [
+        { id: 0, title: 'Sin desafíos', description: 'No hay desafíos disponibles para este día.' }
+      ];
+
+      const completedChallenges = JSON.parse(localStorage.getItem(`challenges-${dateStr}`)) || [];
+
+      challenges.forEach(challenge => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.dataset.challengeId = challenge.id;
+        if (completedChallenges.includes(challenge.id)) {
+          card.classList.add('completed');
+        }
+
+        card.innerHTML = `
+          <h3>${challenge.title}</h3>
+          <p>${challenge.description}</p>
+          <div class="icon-buttons">
+            <span class="tick">✅</span>
+            <span class="cross">❌</span>
+          </div>
+        `;
+
+        cardsContainer.appendChild(card);
+      });
+
+      // Añadir event listeners a los botones
+      document.querySelectorAll('.tick').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const card = btn.closest('.card');
+          card.classList.toggle('completed');
+          updateLocalStorage(dateStr, card.dataset.challengeId, card.classList.contains('completed'));
+        });
+      });
+
+      document.querySelectorAll('.cross').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const card = btn.closest('.card');
+          card.classList.remove('completed');
+          updateLocalStorage(dateStr, card.dataset.challengeId, false);
+        });
+      });
+    }
+
+    // Actualizar localStorage
+    function updateLocalStorage(dateStr, challengeId, isCompleted) {
+      let completedChallenges = JSON.parse(localStorage.getItem(`challenges-${dateStr}`)) || [];
+      if (isCompleted) {
+        if (!completedChallenges.includes(Number(challengeId))) {
+          completedChallenges.push(Number(challengeId));
+        }
+      } else {
+        completedChallenges = completedChallenges.filter(id => id !== Number(challengeId));
+      }
+      localStorage.setItem(`challenges-${dateStr}`, JSON.stringify(completedChallenges));
+
+      // Actualizar calendario
+      const dayElement = document.querySelector(`.calendar-day.clickable[data-date="${dateStr}"]`);
+      if (dayElement) {
+        if (completedChallenges.length > 0) {
+          dayElement.classList.add('completed');
+        } else {
+          dayElement.classList.remove('completed');
+        }
+      }
+    }
+
+    // Inicializar
+    generateCalendar();
+    loadChallenges('2025-05-13');
+  </script>
+</body>
+</html>

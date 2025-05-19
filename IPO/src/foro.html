@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UBICA-2 Foro - Recomendaciones de Sitios</title>
+    <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../images/Logo-corto.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<!-- Te he hecho los comentarios de los cambios en la línea 115, busca por ANTES para llegar a los cambios  -->
+
+<body class="bg-gray-100 font-[Poppins]">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo-text">UBICA-2</a>
+            <ul class="nav-links">
+                <li><a href="index.html" className="back-button">🏡Inicio</a></li>
+                <li><a href="emociones.html" aria-label="Acceder a la navegación emocional">🧭 Navegación emocional</a></li>
+                <li><a href="rutas-tiempo-real.html" aria-label="Acceder a rutas en tiempo real">📍 Rutas en tiempo real</a></li>
+                <li><a href="foro.html" aria-current="page" aria-label="Acceder al foro">💬 Foro</a></li>
+                <li><a href="desafio.html" aria-label="Acceder a desafíos diarios">🎯 Desafíos diarios</a></li>
+                <li><a href="iniciar-sesion.html" id="nav-login-btn" aria-label="Iniciar sesión">Inicia Sesión</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div id="root"></div>
+
+    <div id="loading-overlay">
+        <div class="logo-wrapper">
+            <img src="../images/Logo-corto.png" alt="Logo de UBICA-2">
+            <div class="orbiter">
+                <div class="orb"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        const Forum = () => {
+            const [reviews, setReviews] = useState([]);
+            const [currentIndex, setCurrentIndex] = useState(0);
+            const [userName, setUserName] = useState('');
+            const [placeName, setPlaceName] = useState('');
+            const [comment, setComment] = useState('');
+            const [rating, setRating] = useState(0);
+            const [imageUrl, setImageUrl] = useState('');
+
+            const initialReviews = [
+                {
+                    id: 1,
+                    userName: "Ana",
+                    placeName: "Catedral de Burgos",
+                    comment: "Una obra maestra del gótico, imprescindible si visitas Burgos.",
+                    rating: 5,
+                    imageUrl: "../images/Burgos.jpg",
+                    date: "10/05/2025"
+                },
+                {
+                    id: 2,
+                    userName: "Pedro",
+                    placeName: "Monasterio de las Huelgas",
+                    comment: "Un lugar lleno de historia, muy tranquilo y con un claustro precioso.",
+                    rating: 4,
+                    imageUrl: "../images/monasterio.jpg",
+                    date: "09/05/2025"
+                }
+            ];
+
+            useEffect(() => {
+                const savedReviews = JSON.parse(localStorage.getItem('siteReviews')) || initialReviews;
+                setReviews(savedReviews);
+            }, []);
+
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                if (userName && placeName && comment && rating > 0) {
+                    const newReview = {
+                        id: Date.now(),
+                        userName,
+                        placeName,
+                        comment,
+                        rating,
+                        imageUrl: imageUrl || '/images/placeholder-landscape.jpg',
+                        date: new Date().toLocaleDateString()
+                    };
+                    
+                    const updatedReviews = [...reviews, newReview];
+                    setReviews(updatedReviews);
+                    localStorage.setItem('siteReviews', JSON.stringify(updatedReviews));
+                    setUserName('');
+                    setPlaceName('');
+                    setComment('');
+                    setRating(0);
+                    setImageUrl('');
+                }
+            };
+
+            const nextSlide = () => {
+                setCurrentIndex((prevIndex) => (prevIndex + 1) % reviews.length);
+            };
+
+            const prevSlide = () => {
+                setCurrentIndex((prevIndex) => (prevIndex - 1 + reviews.length) % reviews.length);
+            };
+            
+
+            // He añadido el m-14 para darle un margin superior al div y le he subido un pto al padding de p-4 a p-5
+                // ANTES <div className="container mx-auto p-4"> --> AHORA <div className="container m-14 mx-auto p-5">
+
+
+            // También he probado a buscar la clase que le habías puesto a los títulos de las otras páginas, no sé si 
+            // te convencerá esta otra manera, igualmente te lo dejo por si te apetece probarlo nada más copiarlo
+                // <div className="container mx-auto p-4">
+                    // <h1 className="quienes-banner text-3xl font-bold text-center mb-6">Foro - Recomendaciones de Sitios</h1>
+
+            return (
+            
+                <div className="container mx-auto">
+                    <header class="quienes-banner">
+                        <h1>Foro</h1>
+                    </header>
+                    <div className="bg-white p-6 rounded-lg shadow-md mb-6">
+                        <h2 className="text-xl font-semibold mb-4">Recomendaciones de la Comunidad</h2>
+                        {reviews.length === 0 ? (
+                            <p className="text-gray-500">Aún no hay recomendaciones. ¡Sé el primero en compartir un sitio!</p>
+                        ) : (
+                            <div className="relative">
+                                <div className="overflow-hidden">
+                                    <div
+                                        className="flex transition-transform duration-500"
+                                        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                                    >
+                                        {reviews.map((review) => (
+                                            <div key={review.id} className="min-w-full p-4">
+                                                <div className="bg-gray-50 rounded-lg shadow-sm">
+                                                    <img
+                                                        src={review.imageUrl}
+                                                        alt={`Imagen de ${review.placeName}`}
+                                                        className="carousel-image"
+                                                    />
+                                                    <div className="p-4">
+                                                        <h3 className="text-lg font-bold">{review.placeName}</h3>
+                                                        <p className="font-medium text-gray-600">{review.userName} - {review.date}</p>
+                                                        <div className="flex my-2">
+                                                            {Array.from({ length: 5 }, (_, i) => (
+                                                                <span key={i} className={`text-yellow-400 ${i < review.rating ? 'filled' : ''}`}>
+                                                                    ★
+                                                                </span>
+                                                            ))}
+                                                        </div>
+                                                        <p>{review.comment}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                <button
+                                    onClick={prevSlide}
+                                    className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-r-lg hover:bg-gray-700"
+                                    aria-label="Ver reseña anterior"
+                                >
+                                    ❮
+                                </button>
+                                <button
+                                    onClick={nextSlide}
+                                    className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-l-lg hover:bg-gray-700"
+                                    aria-label="Ver reseña siguiente"
+                                >
+                                    ❯
+                                </button>
+                                <div className="flex justify-center mt-4">
+                                    {reviews.map((_, index) => (
+                                        <span
+                                            key={index}
+                                            className={`h-3 w-3 mx-1 rounded-full ${
+                                                index === currentIndex ? 'bg-indigo-600' : 'bg-gray-300'
+                                            }`}
+                                        ></span>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                    <div className="bg-white p-6 rounded-lg shadow-md">
+                        <h2 className="text-xl font-semibold mb-4">Recomienda un Sitio</h2>
+                        <form onSubmit={handleSubmit} className="space-y-4">
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Tu nombre</label>
+                                <input
+                                    type="text"
+                                    value={userName}
+                                    onChange={(e) => setUserName(e.target.value)}
+                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Nombre del lugar</label>
+                                <input
+                                    type="text"
+                                    value={placeName}
+                                    onChange={(e) => setPlaceName(e.target.value)}
+                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Comentario</label>
+                                <textarea
+                                    value={comment}
+                                    onChange={(e) => setComment(e.target.value)}
+                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                    rows="3"
+                                    required
+                                ></textarea>
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Calificación (1-5 estrellas)</label>
+                                <div className="flex space-x-2">
+                                    {[1, 2, 3, 4, 5].map((star) => (
+                                        <button
+                                            key={star}
+                                            type="button"
+                                            onClick={() => setRating(star)}
+                                            className={`text-2xl ${rating >= star ? 'text-yellow-400' : 'text-gray-300'}`}
+                                        >
+                                            ★
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">URL de la imagen (opcional)</label>
+                                <input
+                                    type="url"
+                                    value={imageUrl}
+                                    onChange={(e) => setImageUrl(e.target.value)}
+                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                    placeholder="/images/placeholder-landscape.jpg"
+                                />
+                            </div>
+                            <div className="flex justify-end items-center">
+                                <button
+                                    type="submit"
+                                    className="w-auto bg-indigo-600 text-white py-1 px-3 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 text-sm"
+                                >
+                                    Enviar Recomendación
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            );
+        };
+
+        ReactDOM.render(<Forum />, document.getElementById('root'));
+    </script>
+</body>
+</html>

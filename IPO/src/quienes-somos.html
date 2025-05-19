@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiénes somos</title>
+    <link rel="icon" type="image/png" href="../images/Logo-corto.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo-text">UBICA-2</a>
+            <ul class="nav-links">
+                <li><a href="index.html" className="back-button">🏡 Inicio</a></li>
+                <li><a href="emociones.html" aria-label="Acceder a la navegación emocional">🧭 Navegación emocional</a></li>
+                <li><a href="rutas-tiempo-real.html" aria-label="Acceder a rutas en tiempo real">📍 Rutas en tiempo real</a></li>
+                <li><a href="foro.html" aria-current="page" aria-label="Acceder al foro">💬 Foro</a></li>
+                <li><a href="desafio.html" aria-label="Acceder a desafíos diarios">🎯 Desafíos diarios</a></li>
+                <li><a href="iniciar-sesion.html" id="nav-login-btn" aria-label="Iniciar sesión">Inicia Sesión</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="quienes-banner">
+        <h1>¿Quiénes somos?</h1>
+    </header>
+
+    <section class="quienes-cuerpo">
+        <div class="content">
+            <h2>Misión</h2>
+            <p>En <strong>UBICA-2</strong> queremos transformar la manera en la que las personas se conectan con su entorno. Nuestra misión es <strong>mejorar la experiencia de moverse por la ciudad</strong> combinando tecnología, accesibilidad y bienestar emocional.</p>
+
+            <h2>Visión</h2>
+            <p>Aspiramos a ser una plataforma de referencia que facilite la <strong>exploración urbana consciente</strong>, fomentando el cuidado personal y la conexión emocional con los espacios que habitamos. Queremos que cada paso cuente y que cada usuario se sienta acompañado.</p>
+
+            <h2>Valores</h2>
+            <ul>
+                <li><strong>Empatía:</strong> Diseñamos con el corazón, pensando en la diversidad de experiencias y necesidades.</li>
+                <li><strong>Innovación:</strong> Usamos tecnología de manera creativa para resolver problemas reales.</li>
+                <li><strong>Accesibilidad:</strong> Creemos en un mundo donde todos puedan moverse libremente y con confianza.</li>
+                <li><strong>Bienestar:</strong> El centro de nuestra propuesta es tu salud mental y emocional.</li>
+            </ul>
+
+            <h2>El equipo</h2>
+            <p>Detrás de esta idea estamos dos personas comprometidas con el diseño centrado en las personas, el impacto social y la innovación tecnológica:</p>
+
+            <div class="equipo-container">
+                <div class="miembro">
+                    <img src="../images/Jorge.png" alt="Jorge">
+                    <h3>Jorge</h3>
+                    <p><strong>Diseñador UX/UI</strong> apasionado por crear soluciones que mejoran vidas. Cree firmemente en el poder de la empatía aplicada al diseño digital - <em>jorge.dommar@usal.es</em></p>
+                </div>
+                <div class="miembro">
+                    <img src="../images/Cynthia.png" alt="Cynthia">
+                    <h3>Cynthia</h3>
+                    <p><strong>Desarrolladora y facilitadora tecnológica</strong>. Amante de los retos sociales, la accesibilidad y las tecnologías que conectan con las personas - <em>cynthiafg@usal.es</em></p>
+                </div>
+            </div>
+
+            <h2>¿Dónde estamos?</h2>
+            <p>Nos encontramos en la <strong>Facultad de Ciencias de la Universidad de Salamanca</strong>, un espacio de innovación, aprendizaje y colaboración. Este es nuestro punto de partida para desarrollar soluciones tecnológicas que impactan positivamente en el entorno.</p>
+
+            <div class="mapa-ubicacion">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3025.053889077998!2d-5.671765084596278!3d40.9613329793021!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd3f265c997cd4eb%3A0x4b107e23e540b401!2sFacultad%20de%20Ciencias%20-%20Universidad%20de%20Salamanca!5e0!3m2!1ses!2ses!4v1713123123791!5m2!1ses!2ses"
+                    width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <div id="loading-overlay">
+        <div class="logo-wrapper">
+            <img src="../images/Logo-corto.png" alt="Logo de carga">
+            <div class="orbiter">
+                <div class="orb"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-transition"></div>
+    <footer class="footer">
+        <div class="footer-left">
+            <div class="store-badges">
+                <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.maps" target="_blank" rel="noopener noreferrer">
+                    <img src="../images/googleplay-ES.svg" alt="Disponible en Google Play">
+                </a>
+                <a href="https://apps.apple.com/app/id585027354" target="_blank" rel="noopener noreferrer">
+                    <img src="../images/appstore-ES.svg" alt="Disponible en App Store">
+                </a>
+            </div>
+        </div>
+        <div class="footer-right">
+            <p>
+                <a href="quienes-somos.html" class="footer-link">Quiénes somos</a> | 
+                © 2025 UBICA-2. Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

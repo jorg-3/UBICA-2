@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iniciar Sesión</title>
+    <link rel="icon" type="image/png" href="../images/Logo-corto.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo-text">UBICA-2</a>
+            <ul class="nav-links">
+                <li><a href="index.html" className="back-button">🏡 Inicio</a></li>
+                <li><a href="emociones.html" aria-label="Acceder a la navegación emocional">🧭 Navegación emocional</a></li>
+                <li><a href="rutas-tiempo-real.html" aria-label="Acceder a rutas en tiempo real">📍 Rutas en tiempo real</a></li>
+                <li><a href="foro.html" aria-current="page" aria-label="Acceder al foro">💬 Foro</a></li>
+                <li><a href="desafio.html" aria-label="Acceder a desafíos diarios">🎯 Desafíos diarios</a></li>
+                <li><a href="iniciar-sesion.html" id="nav-login-btn" aria-label="Iniciar sesión">Inicia Sesión</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="hero login-hero">
+        <div class="hero-content">
+            <div class="hero-bg login-bg"></div>
+            <div class="login-wrapper">
+                <div class="login-box">
+                    <h2 id="login-title">Iniciar Sesión</h2>
+                    <p id="access-message" class="access-message"></p>
+                    <form id="login-form">
+                        <label for="username">Nombre</label>
+                        <input type="text" id="username" name="username" placeholder="Tu nombre"  />
+
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" id="email" name="email" placeholder="ejemplo@correo.com"  />
+
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" name="password" placeholder="********"  />
+
+                        <button type="submit" class="info-button">Entrar</button>
+                    </form>
+                    <p id="register-link">¿No tienes cuenta? <a href="?nuevo=1">Regístrate</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="loading-overlay">
+        <div class="logo-wrapper">
+            <img src="../images/Logo-corto.png" alt="Logo de UBICA-2">
+            <div class="orbiter">
+                <div class="orb"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
